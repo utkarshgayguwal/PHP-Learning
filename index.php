@@ -6,11 +6,10 @@
     <title>PHP Learning</title>
 </head>
 <body>
-    <h1>
-        <?php
-            $mood = 'Fantastic';
-            echo "$mood Life";
-        ?>
-    </h1>
+    <?php 
+        $book = "Can't Hurt Me";
+        $read = false;
+    ?>
+    <h1>I <?php if($read){echo "have read";}else{echo "haven't read ";} ?> "<?php echo $book ?>"</h1>
 </body>
 </html>
