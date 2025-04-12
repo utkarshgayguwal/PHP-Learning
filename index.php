@@ -7,28 +7,48 @@
 </head>
 <body>
     <?php
-        $books = [
+         $books = [
             [
-                "name"        => "Can't Hurt Me",
-                "author"      => "David Goggins",
-                "preferedUrl" => "www.example.com",
+                'name' => 'Do Androids Dream of Electric Sheep',
+                'author' => 'Philip K. Dick',
+                'releaseYear' => 1968,
+                'purchaseUrl' => 'http://example.com'
             ],
             [
-                "name"        => "Mind Management",
-                "author"      => "Swami Mukudananda",
-                "preferedUrl" => "www.example2.com",
+                'name' => 'Project Hail Mary',
+                'author' => 'Andy Weir',
+                'releaseYear' => 2021,
+                'purchaseUrl' => 'http://example.com'
+            ],
+            [
+                'name' => 'The Martian',
+                'author' => 'Andy Weir',
+                'releaseYear' => 2011,
+                'purchaseUrl' => 'http://example.com'
             ],
         ];
+
+        function filterByAuthor($books, $author)
+        {
+            $filteredBooks = [];
+
+            foreach ($books as $book) {
+                if ($book['author'] === $author) {
+                    $filteredBooks[] = $book;
+                }
+            }
+
+            return $filteredBooks;
+        }
     ?>
 
-    <h1>Recommended Books by Me</h1>
     <ul>
-        <?php foreach ($books as $book): ?>
+        <?php foreach (filterByAuthor($books, 'Philip K. Dick') as $book) : ?>
             <li>
-                <a href="<?= $book['preferedUrl'] ?>">
-                    <?= $book['name'] ?>
-                </a>      
-        </li>
+                <a href="<?= $book['purchaseUrl'] ?>">
+                    <?= $book['name']; ?> (<?= $book['releaseYear'] ?>) - By <?= $book['author'] ?>
+                </a>
+            </li>
         <?php endforeach; ?>
     </ul>
 </body>
