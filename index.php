@@ -8,16 +8,27 @@
 <body>
     <?php
         $books = [
-            "Can't Hurt Me",
-            "Make Time",
-            "Mind Management"
+            [
+                "name"        => "Can't Hurt Me",
+                "author"      => "David Goggins",
+                "preferedUrl" => "www.example.com",
+            ],
+            [
+                "name"        => "Mind Management",
+                "author"      => "Swami Mukudananda",
+                "preferedUrl" => "www.example2.com",
+            ],
         ];
     ?>
 
     <h1>Recommended Books by Me</h1>
     <ul>
-        <?php foreach ($books as $book) : ?>
-            <li><?= $book ?></li>
+        <?php foreach ($books as $book): ?>
+            <li>
+                <a href="<?= $book['preferedUrl'] ?>">
+                    <?= $book['name'] ?>
+                </a>      
+        </li>
         <?php endforeach; ?>
     </ul>
 </body>
