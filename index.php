@@ -7,8 +7,9 @@
 </head>
 <body>
     <h1>
-        <?php 
-            echo "Fantastic Life";
+        <?php
+            $mood = 'Fantastic';
+            echo "$mood Life";
         ?>
     </h1>
 </body>
