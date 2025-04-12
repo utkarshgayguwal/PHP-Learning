@@ -6,10 +6,12 @@
     <title>PHP Learning</title>
 </head>
 <body>
-    <?php 
+    <?php
         $book = "Can't Hurt Me";
         $read = false;
+        if ($read) {$message = "I have read \"$book\"";} else {$message = "I haven't read \"$book\"";}
     ?>
-    <h1>I <?php if($read){echo "have read";}else{echo "haven't read ";} ?> "<?php echo $book ?>"</h1>
+    
+    <h1><?php echo $message ?></h1>
 </body>
 </html>
