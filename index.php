@@ -7,11 +7,18 @@
 </head>
 <body>
     <?php
-        $book = "Can't Hurt Me";
-        $read = false;
-        if ($read) {$message = "I have read \"$book\"";} else {$message = "I haven't read \"$book\"";}
+        $books = [
+            "Can't Hurt Me",
+            "Make Time",
+            "Mind Management"
+        ];
     ?>
 
-    <h1><?= $message ?></h1>
+    <h1>Recommended Books by Me</h1>
+    <ul>
+        <?php foreach ($books as $book) : ?>
+            <li><?= $book ?></li>
+        <?php endforeach; ?>
+    </ul>
 </body>
 </html>
