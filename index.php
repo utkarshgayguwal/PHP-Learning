@@ -3,24 +3,33 @@
 require "function.php";
 class Database
 {
-    public $dsn = "mysql:host=localhost;port=3306;user=root;password=password;dbname=php_beginners;charset=utf8mb4";
     public $pdo;
-    public function __construct(){
-        $this->pdo = new PDO($this->dsn);
-    }
-    public $pdo = new PDO($this->dsn);
-    public function query()
+    public function __construct($dsn)
     {
-        $statement = $this->pdo->prepare('select * from posts');
+        $this->pdo = new PDO($dsn);
+    }
+    public function query($query)
+    {
+        $statement = $this->pdo->prepare($query);
         $statement->execute();
         return $statement->fetchAll(PDO::FETCH_ASSOC);
     }
 }
 
-$db = new Database();
-$posts = $db->query();
+$host = "localhost";
+$user = "root";
+$password = "password";
+$port = "3306";
+$dbname = "php_beginners";
+$charset = "utf8mb4";
+
+$dsn = "mysql:host={$host};port={$port};user={$user};password={$password};dbname={$dbname};charset={$charset}";
+
+$db    = new Database($dsn);
+$posts = $db->query('select * from posts');
 foreach ($posts as $post) {
     echo '<li>' . $post['title'] . '</li>';
 }
 die();
+
 require "router.php";
