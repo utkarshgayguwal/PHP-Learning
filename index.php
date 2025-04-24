@@ -3,21 +3,12 @@
 require "function.php";
 require "Database.php";
 
-$database = [
-    'host' => 'localhost',
-    'user' => 'root',
-    'password' => 'password',
-    'port' => '3306',
-    'dbname' => 'php_beginners',
-    'charset' => 'utf8mb4'
-];
+$config = require 'config.php';
 
+$dsn = 'mysql:' . http_build_query($config['database'], '', ';');
+$db  = new Database($dsn);
 
-$dsn = 'mysql:' . http_build_query($database, '', ';');
-$db    = new Database($dsn);
-
-
-$posts = $db->query('select * from posts')->fetchAll(PDO::FETCH_ASSOC);
+$posts = $db->query('select * from posts')->fetchAll();
 // dd($posts);
 foreach ($posts as $post) {
     echo '<li>' . $post['title'] . '</li>';
