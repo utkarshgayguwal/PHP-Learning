@@ -16,14 +16,17 @@ class Database
     }
 }
 
-$host = "localhost";
-$user = "root";
-$password = "password";
-$port = "3306";
-$dbname = "php_beginners";
-$charset = "utf8mb4";
+$database = [
+    'host' => 'localhost',
+    'user' => 'root',
+    'password' => 'password',
+    'port' => '3306',
+    'dbname' => 'php_beginners',
+    'charset' => 'utf8mb4'
+];
 
-$dsn = "mysql:host={$host};port={$port};user={$user};password={$password};dbname={$dbname};charset={$charset}";
+
+$dsn = 'mysql:' . http_build_query($database, '', ';');
 
 $db    = new Database($dsn);
 $posts = $db->query('select * from posts');
