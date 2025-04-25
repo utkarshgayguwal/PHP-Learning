@@ -6,7 +6,7 @@ return [
         'host' => 'localhost',
         'user' => 'root',
         'port' => '3306',
-        'dbname' => 'php_beginners',
+        'dbname' => 'mini_project_1',
         'password' => 'password',
     ],
 ];
