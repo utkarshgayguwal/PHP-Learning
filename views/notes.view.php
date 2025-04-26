@@ -7,7 +7,7 @@
     <div class="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
 
     <?php foreach ($notes as $note) {
-            echo "<li><a href='/note?id={$note['id']}'>" . $note['description'] . '</a></li>';
+            echo "<li><a href='/note?id={$note['id']}'>" . htmlspecialchars($note['description']) . '</a></li>';
     }?>
 
     <div class="mx-auto max-w-7xl">
