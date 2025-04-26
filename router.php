@@ -15,12 +15,12 @@ function RouterToController($uri, $routes){
     if(array_key_exists($uri, $routes)){
         require $routes[$uri];
     }else{
-        abort();
+        abort(Response::NOT_FOUND_ERR);
     }
 }
 
-function abort(){
-    http_response_code(404);
-    require 'controllers/404.php';
+function abort($code){
+    http_response_code($code);
+    require "controllers/{$code}.php";
     die();
 }
