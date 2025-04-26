@@ -19,7 +19,7 @@ function RouterToController($uri, $routes){
     }
 }
 
-function abort($code){
+function abort($code=404){
     http_response_code($code);
     require "controllers/{$code}.php";
     die();

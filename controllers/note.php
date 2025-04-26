@@ -11,14 +11,7 @@ $db  = new Database($dsn);
 $id = $_GET['id'];
 $currentUser = 1;
 $query = "select * from notes where id = :id";
-$note = $db->query($query, ['id' => $_GET['id']])->fetch();
+$note = $db->query($query, ['id' => $_GET['id']])->fetchOrAbort();
 
-if(!$note){
-    return  require("views/404.view.php");
-}
-
-if($note['user_id'] !== $currentUser){
-    abort(Response::FORBIDDEN);
-}
-
+authorised($note['user_id'] === $currentUser);
 require "views/note.view.php";

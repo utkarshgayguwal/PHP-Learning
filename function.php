@@ -25,7 +25,11 @@ function uri($path){
     return $_SERVER['REQUEST_URI'] == $path ? "bg-gray-900 text-white" : "text-gray-300" ;
 }
 
-
+function authorised($condition, $status = Response::FORBIDDEN){
+    if (!$condition){
+        abort($status);
+    }
+}
 
 
 

@@ -3,6 +3,7 @@
 class Database
 {
     public $pdo;
+    public $statement;
     public function __construct($dsn)
     {
         $this->pdo = new PDO($dsn, null, null, [
@@ -11,8 +12,24 @@ class Database
     }
     public function query($query, $params = [])
     {
-        $statement = $this->pdo->prepare($query);
-        $statement->execute($params);
-        return $statement;
+        $this->statement = $this->pdo->prepare($query);
+        $this->statement->execute($params);
+        return $this;
+    }
+
+    public function fetch(){
+        return $this->statement->fetch();
+    }
+    
+    public function fetchAll(){
+        return $this->statement->fetchAll();
+    }
+    
+    public function fetchOrAbort(){
+        $result = $this->statement->fetch();
+        if(!$result){
+            abort();
+        }
+        return $result;
     }
 }
