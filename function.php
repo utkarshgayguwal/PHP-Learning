@@ -31,5 +31,11 @@ function authorised($condition, $status = Response::FORBIDDEN){
     }
 }
 
+function base_path($path){
+    return BASE_PATH . $path;
+}
 
-
+function view($path, $attribute = []){
+    extract($attribute);
+    return require base_path('views/' . $path);
+}

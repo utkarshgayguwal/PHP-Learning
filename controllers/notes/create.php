@@ -1,19 +1,17 @@
 <?php
 
-require 'Validation.php';
+require base_path('Validation.php');
 $heading = "Note Creation"; 
 
-$config = require 'config.php';
-$dsn = 'mysql:' . http_build_query($config['database'], '', ';');
-$db  = new Database($dsn);
-$validator = new Validation();
+$config = require base_path('config.php');
+$db  = new Database(config: $config['database']);
 $description = trim($_POST['description']);
+$errors = [];
 
 if($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-    $errors = [];
 
-    if(!$validator->string($description, 1, 1000)) {
+    if(!Validation::string($description, 1, 1000)) {
         $errors['description'] = 'A Description of not more than 1000 characters is required';
     }
 
@@ -25,4 +23,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 // authorised($note['user_id'] === $currentUser);
-require "views/notes/create.view.php";
+view("notes/create.view.php", [ 
+    'heading' => 'All Notes',
+    'errors' => $errors
+]);
+

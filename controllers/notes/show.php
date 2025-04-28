@@ -2,10 +2,8 @@
 
 $heading = "Note Description"; 
 
-$config = require 'config.php';
-
-$dsn = 'mysql:' . http_build_query($config['database'], '', ';');
-$db  = new Database($dsn);
+$config = require base_path('config.php');
+$db  = new Database($config['database']);
 
 
 $id = $_GET['id'];
@@ -14,4 +12,9 @@ $query = "select * from notes where id = :id";
 $note = $db->query($query, ['id' => $_GET['id']])->fetchOrAbort();
 
 authorised($note['user_id'] === $currentUser);
-require "views/notes/show.view.php";
+
+view("notes/show.view.php", [ 
+    'heading' => 'All Notes',
+    'note' => $note
+]);
+

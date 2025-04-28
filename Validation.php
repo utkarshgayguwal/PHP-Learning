@@ -1,7 +1,7 @@
 <?php 
 
 class Validation{
-    public function string($value, $min, $max){
+    public static function string($value, $min, $max){
         return strlen($value)>= $min && strlen($value)<=$max;
     }
 }
