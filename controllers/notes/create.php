@@ -25,4 +25,4 @@ if($_SERVER['REQUEST_METHOD'] == 'POST') {
 }
 
 // authorised($note['user_id'] === $currentUser);
-require "views/note-create.view.php";
+require "views/notes/create.view.php";
