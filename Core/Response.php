@@ -1,6 +1,6 @@
 <?php 
 
-use const Dom\NOT_FOUND_ERR;
+namespace Core;
 
 class Response{
     const NOT_FOUND_ERR = 404;

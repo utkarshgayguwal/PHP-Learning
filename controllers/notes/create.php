@@ -1,5 +1,8 @@
 <?php
 
+use Core\Database;
+use Core\Validation;
+
 require base_path('Core/Validation.php');
 $heading = "Note Creation"; 
 
