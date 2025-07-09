@@ -8,5 +8,5 @@ $router->get('/note', 'controllers/notes/show.php');
 $router->get('/note-create', 'controllers/notes/create.php');
 
 $router->post('/note-store', 'controllers/notes/store.php');
-$router->post('/note-delete', 'controllers/notes/delete.php');
+$router->post('/note-delete', 'controllers/notes/destroy.php');
 
